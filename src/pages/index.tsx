@@ -1,19 +1,13 @@
+import { Box, Button, Typography } from "@mui/material";
 import Head from "next/head";
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { Box, Typography } from "@mui/material";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/pizza-menu");
+  };
+
   return (
     <>
       <Head>
@@ -23,10 +17,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}>
-        <main className={styles.main}>
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          height: "100vh",
+        }}>
+        <main>
           <Box>
-            <Typography>{`Sam's Pizza`}</Typography>
+            <Typography>{`Welcome to Sam's Pizza`}</Typography>
+            <Typography>{`This is the landing Page...`}</Typography>
+            <Typography>{`Auth Page is Comming soon...`}</Typography>
+          </Box>
+          <Box>
+            <Button
+              onClick={handleClick}>{`Go to Product Details Page`}</Button>
           </Box>
         </main>
       </div>
